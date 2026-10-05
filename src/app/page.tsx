@@ -3,6 +3,7 @@ import {
   AppShell,
   AppShellHeader,
   AppShellMain,
+  Box,
   Group,
   Text,
   Title,
@@ -11,55 +12,18 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <AppShell header={{ height: 60 }} padding="md">
-      <AppShellHeader>
-        <Group className="h-full px-md">
-          <Image
-            className="dark:invert"
-            src="https://nextjs.org/icons/next.svg"
-            alt="logo"
-            width={100}
-            height={100}
-          />
-        </Group>
-      </AppShellHeader>
-      <AppShellMain>
-        <Title className="text-center mt-20">
-          Welcome to{" "}
-          <Text
-            inherit
-            variant="gradient"
-            component="span"
-            gradient={{ from: "pink", to: "yellow" }}
-          >
-            Mantine
-          </Text>{" "}
-          +
-          <Text
-            inherit
-            variant="gradient"
-            component="span"
-            gradient={{ from: "blue", to: "green" }}
-          >
-            TailwindCSS
-          </Text>
-        </Title>
-        <Text
-          className="text-center text-gray-700 dark:text-gray-300 max-w-[500px] mx-auto mt-xl"
-          ta="center"
-          size="lg"
-          maw={580}
-          mx="auto"
-          mt="xl"
+    <Box className="container mx-auto px-4 py-8">
+      <Box className="max-w-3xl mx-auto text-center mb-12">
+        <Title
+          order={1}
+          className="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-linear-to-r
+                          from-magic-light-purple via-magic-purple to-magic-pink"
         >
-          This starter Next.js project includes a minimal setup for Mantine with
-          TailwindCSS. To get started edit page.tsx file.
-        </Text>
+          Open Source Spirit Shop
+        </Title>
+        <Text className="text-lg text-foreground/80 ">Discover magical potions</Text>
+      </Box>
+    </Box>
 
-        <div className="flex justify-center mt-10">
-          {/* <ColorSchemesSwitcher /> */}
-        </div>
-      </AppShellMain>
-    </AppShell>
   );
 }

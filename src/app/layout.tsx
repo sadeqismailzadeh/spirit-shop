@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
 import {
+  AppShellNavbar,
+  Box,
   ColorSchemeScript,
   mantineHtmlProps,
   MantineProvider,
 } from "@mantine/core";
 import theme from "./theme";
 import "./globals.css";
+import Navigation from "@/components/navigation";
+
+import {
+  AppShell,
+  AppShellHeader,
+  AppShellMain,
+  Group,
+  Text,
+  Title,
+} from "@mantine/core";
 
 export const metadata: Metadata = {
   title: "Next App Mantine Tailwind Template",
@@ -22,7 +34,10 @@ export default function RootLayout({
       <head>{/* <ColorSchemeScript /> */}</head>
       <body className="antialiased">
         <MantineProvider theme={theme} defaultColorScheme="dark">
-          {children}
+          <Box className="container mx-auto px-4 py-8">
+            <Navigation/>
+            <Box className="min-h-screen p-8">{children}</Box>
+          </Box>
         </MantineProvider>
       </body>
     </html>

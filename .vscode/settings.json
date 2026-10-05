@@ -3,12 +3,15 @@
     "source.fixAll.eslint": "always"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
+  // "editor.formatOnSave": true,
   "cssVariables.lookupFiles": [
     "**/*.css",
     "**/*.scss",
     "**/*.sass",
     "**/*.less",
     "node_modules/@mantine/core/styles.layer.css"
-  ]
+  ],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
