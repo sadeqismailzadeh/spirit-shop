@@ -1,4 +1,5 @@
 import { ColorSchemesSwitcher } from "@/components/color-schemes-switcher";
+import { fetchPotions } from "@/lib/github";
 import {
   AppShell,
   AppShellHeader,
@@ -10,9 +11,10 @@ import {
 } from "@mantine/core";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const data = await fetchPotions();
   return (
-    <Box className="container mx-auto px-4 py-8">
+    <main className="container mx-auto px-4 py-8">
       <Box className="max-w-3xl mx-auto text-center mb-12">
         <Title
           order={1}
@@ -21,9 +23,11 @@ export default function Home() {
         >
           Open Source Spirit Shop
         </Title>
-        <Text className="text-lg text-foreground/80 ">Discover magical potions</Text>
+        <Text className="text-lg text-foreground/80 ">
+          Discover magical potions
+        </Text>
+        {JSON.stringify(data, null, 2)}
       </Box>
-    </Box>
-
+    </main>
   );
 }
