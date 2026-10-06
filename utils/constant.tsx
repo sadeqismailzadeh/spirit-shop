@@ -26,3 +26,4 @@ export const MAGICAL_TYPES = [
     icon: <SparklesIcon className="text-magic-purple" />,
   },
 ];
+
