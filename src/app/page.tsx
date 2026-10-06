@@ -15,6 +15,7 @@ import {
 } from "@mantine/core";
 import Image from "next/image";
 import { PotionType } from "./types/github";
+import PotionGrid from "@/components/potions/potion-grid";
 
 
 export default async function Home() {
@@ -36,24 +37,7 @@ export default async function Home() {
       </Box>
 
       <Box>
-        {potions.map(
-          (
-            { full_name, name, description, topics }: PotionType,
-            index: number,
-          ) => {
-            return (
-              <Card key={`${full_name}-${index}`}>
-                <CardSection>{name}</CardSection>
-                <Text> {description}</Text>
-                <Box className="flex items-center gap-2">
-                    {topics.map((topic, idx) => {
-                      return <span key={idx}>{topic}</span>;
-                    })}
-                </Box>
-              </Card>
-            );
-          },
-        )}
+       <PotionGrid potions={potions}/>
       </Box>
     </main>
   );
