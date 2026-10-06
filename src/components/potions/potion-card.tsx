@@ -1,10 +1,10 @@
-import React from "react";
 import { PotionType } from "@/app/types/github";
 import { Badge, Box, Card, CardSection, Text } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
-import { getMagicalTypeIcon } from "../../../utils";
+import { getMagicalTypeIcon } from "@/app/utils";
 import { Package2Icon, PackageIcon, StarIcon } from "lucide-react";
+import { formatNumber } from "@/app/utils/constant";
 
 export default function PotionCard({
   full_name,
@@ -69,11 +69,11 @@ export default function PotionCard({
           <div className="flex items-center justify-between text-xs text-muted-foreground">
             <div className="flex items-center gap-1">
               <StarIcon className="w-3.5 h-3.5 text-yellow-400" />
-              <span>{stargazers_count}</span>
+              <span>{formatNumber(stargazers_count)}</span>
             </div>
             <div className="flex items-center gap-1">
               <PackageIcon className="w-3.5 h-3.5 text-blue-400" />
-              <span>{forks_count}</span>
+              <span>{formatNumber(forks_count)}</span>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function PotionCard({
           return (
             // badges
             <div
-              key={`${topic}-${index}`}
+              key={`${topic}-${idx}`}
               className="text-xs px-2 py-1 bg-magic-purple/15
                      text-white/80 hover:bg-magic-purple/25"
             >

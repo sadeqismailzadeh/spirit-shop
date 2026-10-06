@@ -1,6 +1,6 @@
 import { GitHubRepo } from "@/app/types/github";
 import { MessageCircleDashed } from "lucide-react";
-import { MAGICAL_TYPES } from "../../utils/constant";
+import { MAGICAL_TYPES } from "../app/utils/constant";
 
 const GITHUB_API_URL = "https://api.github.com";
 
