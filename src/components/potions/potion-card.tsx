@@ -5,6 +5,7 @@ import React from "react";
 import { getMagicalTypeIcon } from "@/app/utils";
 import { Package2Icon, PackageIcon, StarIcon } from "lucide-react";
 import { formatNumber } from "@/app/utils/constant";
+import Link from "next/link";
 
 export default function PotionCard({
   full_name,
@@ -18,6 +19,7 @@ export default function PotionCard({
   forks_count,
 }: PotionType) {
   return (
+    <Link href={`/potions/${full_name.replace("/", "__")}`}>
     <Card
       key={`${full_name}-${name}`}
       className={`potion-card relative group h-full cursor-pointer 
@@ -93,5 +95,6 @@ export default function PotionCard({
         })}
       </div>
     </Card>
+    </Link>
   );
 }

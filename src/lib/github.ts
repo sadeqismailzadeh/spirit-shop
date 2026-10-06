@@ -12,7 +12,6 @@ const POTION_EFFECTS = [
   "Unlocks the secrets of clean architecture",
 ];
 
-
 function transformRepoToPotion(repo: GitHubRepo, index: number) {
   return {
     ...repo,
@@ -44,6 +43,36 @@ export async function fetchPotions() {
     return data.items.map((repo: GitHubRepo, index: number) => {
       return transformRepoToPotion(repo, index);
     });
+  } catch (error) {
+    console.error("Failed to fetch potion", (error as Error).message);
+    return [];
+  }
+}
+
+export async function fetchPotion(owner: string, repo: string) {
+  const url = `${GITHUB_API_URL}/repos/${owner}/${repo}`;
+
+  const githubToken = process.env.GITHUB_TOKEN;
+  const headers = {
+    Accept: " application/vnd.github+json",
+    ...(githubToken && {
+      Authorization: `Bearer ${githubToken}`,
+    }),
+  };
+  try {
+    const response = await fetch(url, {
+      headers,
+      next: {
+        revalidate: 3600,
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch potions `);
+    }
+
+    const data = await response.json();
+    console.log("fetching potion:", { data });
+    return transformRepoToPotion(data, 0);
   } catch (error) {
     console.error("Failed to fetch potion", (error as Error).message);
     return [];
