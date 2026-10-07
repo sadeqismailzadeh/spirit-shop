@@ -17,6 +17,6 @@ export type GitHubRepo = {
 export type MagicalType = "fire" | "ice" | "electric" | "all";
 
 export interface PotionType extends GitHubRepo {
-  postionEffect: string;
+  potionEffect: string;
   magicalType: MagicalType;
 }
