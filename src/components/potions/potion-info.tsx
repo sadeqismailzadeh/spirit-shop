@@ -2,9 +2,10 @@ import { PotionType } from "@/app/types/github";
 import { potionClasses } from "@/app/utils/constant";
 import React from "react";
 import { PotionHeader, PotionInfoCard, PotionStats } from "./potion-common";
-import { Calendar1Icon, CalendarIcon, CodeIcon } from "lucide-react";
+import { Calendar1Icon, CalendarIcon, CodeIcon, StarIcon } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import Image from "next/image";
+import { Span } from "next/dist/trace";
 
 interface PotionInfoType {
   potion: PotionType;
@@ -24,6 +25,13 @@ export default function PotionInfo({ potion }: PotionInfoType) {
     magicalType,
     potionEffect,
   } = potion;
+
+  const brewingDifficulty = (forks_count / (stargazers_count || 1)) * 100;
+
+  const potency = Math.min(
+    5,
+    Math.max(1, Math.floor(stargazers_count / 50_000)),
+  );
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -140,35 +148,57 @@ export default function PotionInfo({ potion }: PotionInfoType) {
 
             <div
               className={`p-6 rounded-2xl border
-                 border-magic-purple/20 h-full`}
+                 border-magic-purple/20`}
             >
-              <div className="flex items-center justify-betweens">
-                <h3
-                  className="text-xl font-semibold mb-4 mr-4 text-transparent bg-linear-to-r
+              <h3
+                className="text-xl font-semibold mb-4 mr-4 text-transparent bg-linear-to-r
               bg-clip-text  from-magic-light-purple via-magic-purple
               to-magic-pink"
-                >
-                  Magical Properties
-                </h3>
+              >
+                Magical Properties
+              </h3>
 
-                <div className="grid cols-1  md:grid-cols-2 gap-6 mb-6">
-                  <PotionInfoCard title={"Brewing difficulty"}>
-                    <div className="flex items-center gap-2">
+              <div className="grid cols-1  md:grid-cols-2 gap-6 mb-6">
+                <PotionInfoCard title={"Brewing difficulty"}>
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="relative w-full h-2 bg-secondary/50 rounded-full
+                    overflow-hidden"
+                    >
                       <div
-                        className={`relative overflow-hidden rounded-full ring-2 
-                 ring-purple-100/20`}
+                        className="absolute h-full bg-linear-to-r
+                      from-magic-purple to-magic-pink rounded-full"
+                        style={{ width: `${brewingDifficulty}%` }}
                       ></div>
                     </div>
-                  </PotionInfoCard>
-
-                  <PotionInfoCard title={"Potency"}>
-                    <span>{name}</span>
-                  </PotionInfoCard>
-
-                  <div className="mb-6">
-                    <PotionInfoCard title={"Repository name"}></PotionInfoCard>
+                    <span className="ml-2 text-sm">
+                      {brewingDifficulty.toFixed(0)}%
+                    </span>
                   </div>
-                </div>
+                </PotionInfoCard>
+
+                <PotionInfoCard title={"Potency"}>
+                  <div className="flex ">
+                    {Array.from({ length: potency }).map((_, i) => {
+                      return (
+                        <span key={i} className="text-yellow-400">
+                          <StarIcon fill="currentColor" className="h-5 w-5" />
+                        </span>
+                      );
+                    })}
+                  </div>
+                </PotionInfoCard>
+              </div>
+
+              <div className="mb-6">
+                <PotionInfoCard title="Notes from the Alchemist">
+                  <p className="italic text-sm">
+                    &quot;This powerful brew contains the essence of open source
+                    magic, harnessed from the contributions of developers
+                    worldwide. Use it wisely to enhance your coding abilities
+                    and bring your digital creations to life.&quot;
+                  </p>
+                </PotionInfoCard>
               </div>
             </div>
           </div>
