@@ -9,6 +9,7 @@ import {
 import theme from "./theme";
 import "./globals.css";
 import Navigation from "@/components/navigation";
+import DevClickToComponent from "@/components/dev-click-to-component";
 
 import {
   AppShell,
@@ -34,8 +35,13 @@ export default function RootLayout({
       <head>{/* <ColorSchemeScript /> */}</head>
       <body className="antialiased">
         <MantineProvider theme={theme} defaultColorScheme="dark">
+          <DevClickToComponent
+            projectRoot={
+              process.env.NODE_ENV === "development" ? process.cwd() : undefined
+            }
+          />
           <Box className="container mx-auto px-4 py-8">
-            <Navigation/>
+            <Navigation />
             <Box className="min-h-screen p-8">{children}</Box>
           </Box>
         </MantineProvider>
