@@ -12,7 +12,7 @@ export default function Navigation() {
       </Link>
 
       <Link
-        href="/mystry-potion"
+        href="/mystery-potion"
         className="px-4 py-2 rounded-lg bg-secondary text-foreground
          hover:bg-secondary/80 transition-colors"
       >
