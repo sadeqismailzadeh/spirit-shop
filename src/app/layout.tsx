@@ -19,14 +19,15 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-
-const isDev =  process.env.NODE_ENV === 'development'
-export ORIGIN_URL = isDev
+import { ORIGIN_URL } from "./utils";
 
 export const metadata: Metadata = {
   title: "Spirit Shop",
   description: "Open Source Spirit Shop",
-  metadataBase: new URL("")
+  metadataBase: new URL(ORIGIN_URL),
+  alternates: {
+    canonical: ORIGIN_URL,  
+  },
 };
 
 export default function RootLayout({
