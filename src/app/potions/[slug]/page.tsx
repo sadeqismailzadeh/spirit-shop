@@ -1,5 +1,5 @@
 import { ORIGIN_URL } from "@/utils";
-import PotionInfo from "@/components/potions/potion-info";
+import PotionInfo from "@/components/potion-info/potion-info";
 import { fetchPotion } from "@/lib/github";
 import { JsonInput } from "@mantine/core";
 import { notFound } from "next/navigation";

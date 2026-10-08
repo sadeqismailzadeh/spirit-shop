@@ -1,4 +1,4 @@
-import PotionInfo from '@/components/potions/potion-info';
+import PotionInfo from '@/components/potion-info/potion-info';
 import { fetchRandomTrendingPotion } from '@/lib/github';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
