@@ -1,4 +1,4 @@
-import { GitHubRepo } from "@/app/types/github";
+import { GitHubRepo, MagicalType } from "@/app/types/github";
 import { MessageCircleDashed } from "lucide-react";
 import { MAGICAL_TYPES } from "../app/utils/constant";
 
@@ -18,7 +18,7 @@ function transformRepoToPotion(repo: GitHubRepo, index: number) {
     topics: repo.topics.slice(0, 3),
     // random selection of POTION_EFFECTS and MAGICAL_TYPES
     potionEffect: POTION_EFFECTS[index % POTION_EFFECTS.length],
-    magicalType: MAGICAL_TYPES[index % MAGICAL_TYPES.length].id,
+    magicalType: MAGICAL_TYPES[index % MAGICAL_TYPES.length].id as MagicalType,
   };
 }
 
@@ -45,7 +45,7 @@ export async function fetchPotions() {
     });
   } catch (error) {
     console.error("Failed to fetch potion", (error as Error).message);
-    return [];
+    return null;
   }
 }
 
@@ -75,6 +75,6 @@ export async function fetchPotion(owner: string, repo: string) {
     return transformRepoToPotion(data, data.id);
   } catch (error) {
     console.error("Failed to fetch potion", (error as Error).message);
-    return [];
+    return null;
   }
 }

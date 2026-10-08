@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   ];
   return popularRepos.map((repo) => {
     return {
-      slug: repo.replace('/', '__'),
+      slug: repo.replace("/", "__"),
     };
   });
 }
@@ -33,5 +33,10 @@ export default async function PotionPage({
   }
 
   const potion = await fetchPotion(owner, repo);
-  return <PotionInfo potion={potion} />
+
+  if (!potion) {
+    notFound();
+  }
+  
+  return <PotionInfo potion={potion} />;
 }
