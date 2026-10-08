@@ -16,10 +16,23 @@ import {
 import Image from "next/image";
 import { PotionType } from "./types/github";
 import PotionGrid from "@/components/potions/potion-grid";
+import { PotionFilters } from "@/components/potions/potion-filters";
 
+type PageType = {
+  searchParams: Promise<{
+    type: string;
+  }>;
+};
 
-export default async function Home() {
+export default async function Home({ searchParams }: PageType) {
   const potions = await fetchPotions();
+  const { type } = await searchParams;
+
+  const filteredPotions = type
+    ? potions.filter((potion: PotionType) => {
+        return potion.magicalType === type;
+      })
+    : potions;
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -35,9 +48,11 @@ export default async function Home() {
           Discover magical potions
         </Text>
       </Box>
-
+      <div className="flex justify-center mb-6">
+        <PotionFilters />
+      </div>
       <Box>
-       <PotionGrid potions={potions}/>
+        <PotionGrid potions={filteredPotions} />
       </Box>
     </main>
   );
