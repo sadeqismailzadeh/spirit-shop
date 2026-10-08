@@ -20,9 +20,13 @@ import {
   Title,
 } from "@mantine/core";
 
+const isDev =  process.env.NODE_ENV === 'development'
+export ORIGIN_URL = isDev
+
 export const metadata: Metadata = {
-  title: "Next App Mantine Tailwind Template",
-  description: "Next App Mantine Tailwind Template",
+  title: "Spirit Shop",
+  description: "Open Source Spirit Shop",
+  metadataBase: new URL("")
 };
 
 export default function RootLayout({
