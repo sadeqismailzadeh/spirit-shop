@@ -19,7 +19,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
-import { ORIGIN_URL } from "./utils";
+import { ORIGIN_URL } from "../utils";
 
 export const metadata: Metadata = {
   title: "Spirit Shop",

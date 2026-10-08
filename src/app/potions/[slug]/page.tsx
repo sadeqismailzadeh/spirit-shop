@@ -1,4 +1,4 @@
-import { ORIGIN_URL } from "@/app/utils";
+import { ORIGIN_URL } from "@/utils";
 import PotionInfo from "@/components/potions/potion-info";
 import { fetchPotion } from "@/lib/github";
 import { JsonInput } from "@mantine/core";

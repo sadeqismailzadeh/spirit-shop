@@ -1,10 +1,10 @@
-import { PotionType } from "@/app/types/github";
+import { PotionType } from "@/types/github";
 import { Badge, Box, Card, CardSection, Text } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
-import { getMagicalTypeIcon } from "@/app/utils";
+import { getMagicalTypeIcon } from "@/utils";
 import { Package2Icon, PackageIcon, StarIcon } from "lucide-react";
-import { formatNumber, potionClasses } from "@/app/utils/constant";
+import { formatNumber, potionClasses } from "@/utils/constant";
 import Link from "next/link";
 import { PotionHeader, PotionStats } from "./potion-common";
 

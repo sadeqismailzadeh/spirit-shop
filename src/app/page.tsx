@@ -14,7 +14,7 @@ import {
   Title,
 } from "@mantine/core";
 import Image from "next/image";
-import { PotionType } from "./types/github";
+import { PotionType } from "../types/github";
 import PotionGrid from "@/components/potions/potion-grid";
 import { PotionFilters } from "@/components/potions/potion-filters";
 

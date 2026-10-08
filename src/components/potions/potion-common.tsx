@@ -1,4 +1,4 @@
-import { formatNumber } from "@/app/utils/constant";
+import { formatNumber } from "@/utils/constant";
 import { StarIcon, PackageIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";

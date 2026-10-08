@@ -1,4 +1,4 @@
-import { PotionType } from "@/app/types/github";
+import { PotionType } from "@/types/github";
 import { MAGICAL_TYPES } from "./constant";
 
 export function getMagicalTypeIcon(magicalType: string) {

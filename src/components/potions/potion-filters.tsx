@@ -1,5 +1,5 @@
-import { getFilterPillColor } from "@/app/utils";
-import { MAGICAL_TYPES } from "@/app/utils/constant";
+import { getFilterPillColor } from "@/utils";
+import { MAGICAL_TYPES } from "@/utils/constant";
 import Link from "next/link";
 
 export function PotionFilters() {

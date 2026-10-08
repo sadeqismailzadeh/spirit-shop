@@ -1,5 +1,5 @@
-import { PotionType } from "@/app/types/github";
-import { potionClasses } from "@/app/utils/constant";
+import { PotionType } from "@/types/github";
+import { potionClasses } from "@/utils/constant";
 import React from "react";
 import { PotionHeader, PotionInfoCard, PotionStats } from "./potion-common";
 import { Calendar1Icon, CalendarIcon, CodeIcon, StarIcon } from "lucide-react";
